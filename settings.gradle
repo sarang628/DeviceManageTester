@@ -1,0 +1,3 @@
+rootProject.name = "DeviceManageTester"
+include ':app'
+include ':devicemanager'
