@@ -1,3 +1,8 @@
 rootProject.name = "DeviceManageTester"
 include ':app'
 include ':devicemanager'
+include ':TorangDeviceManager'
+
+
+include ':core'
+project(':core').projectDir = new File('/Users/sarangyang/AndroidStudioProjects/TorangAndroid/core')

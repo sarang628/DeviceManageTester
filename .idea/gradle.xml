@@ -10,8 +10,10 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/TorangDeviceManager" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/devicemanager" />
+            <option value="$PROJECT_DIR$/../TorangAndroid/core" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
