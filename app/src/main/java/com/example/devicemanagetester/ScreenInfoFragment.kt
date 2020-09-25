@@ -21,7 +21,7 @@ private const val ARG_PARAM2 = "param2"
  * Use the [BuildInfoFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class BuildInfoFragment : Fragment() {
+class ScreenInfoFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -49,27 +49,16 @@ class BuildInfoFragment : Fragment() {
         fragmentBuildInfoBinding.buildRv.adapter = BuildRvAdt()
         (fragmentBuildInfoBinding.buildRv.adapter as BuildRvAdt).apply {
             setData(ArrayList<BuildData>().apply {
-                add(BuildData("Build.USER", Build.USER))
-                add(BuildData("Build.DEVICE", Build.DEVICE))
-                add(BuildData("Build.BOARD", Build.BOARD))
-                add(BuildData("Build.BOOTLOADER", Build.BOOTLOADER))
-                add(BuildData("Build.BRAND", Build.BRAND))
-                add(BuildData("Build.DISPLAY", Build.DISPLAY))
-                add(BuildData("Build.FINGERPRINT", Build.FINGERPRINT))
-                add(BuildData("Build.HARDWARE", Build.HARDWARE))
-                add(BuildData("Build.HOST", Build.HOST))
-                add(BuildData("Build.ID", Build.ID))
-                add(BuildData("Build.MANUFACTURER", Build.MANUFACTURER))
-                add(BuildData("Build.MODEL", Build.MODEL))
-                add(BuildData("Build.PRODUCT", Build.PRODUCT))
-                add(BuildData("Build.TAGS", Build.TAGS))
-                add(BuildData("Build.TYPE", Build.TYPE))
-                add(BuildData("Build.UNKNOWN", Build.UNKNOWN))
-                add(BuildData("Build.getRadioVersion", Build.getRadioVersion()))
-                add(BuildData("Build.VERSION.CODENAME", Build.VERSION.CODENAME))
-                add(BuildData("Build.VERSION.INCREMENTAL", Build.VERSION.INCREMENTAL))
-                add(BuildData("Build.VERSION.RELEASE", Build.VERSION.RELEASE))
-                add(BuildData("Build.VERSION.SDK_INT", Build.VERSION.SDK_INT.toString()))
+                add(BuildData("Density", deviceManager.getDensity(context!!).toString()))
+                add(BuildData("DensityDpi", deviceManager.getDensityDpi(context!!).toString()))
+                add(BuildData("DisplayId", deviceManager.getDisplayId(context!!).toString()))
+                add(BuildData("HeightPixels", deviceManager.getHeightPixels(context!!).toString()))
+                add(BuildData("RefreshRate", deviceManager.getRefreshRate(context!!).toString()))
+                add(BuildData("Rotation", deviceManager.getRotation(context!!).toString()))
+                add(BuildData("ScaledDensity", deviceManager.getScaledDensity(context!!).toString()))
+                add(BuildData("WidthPixels", deviceManager.getWidthPixels(context!!).toString()))
+                add(BuildData("xDpi", deviceManager.getxDpi(context!!).toString()))
+                add(BuildData("yDpi", deviceManager.getyDpi(context!!).toString()))
             })
         }
     }
@@ -86,7 +75,7 @@ class BuildInfoFragment : Fragment() {
         // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
-            BuildInfoFragment().apply {
+            ScreenInfoFragment().apply {
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)
                     putString(ARG_PARAM2, param2)
