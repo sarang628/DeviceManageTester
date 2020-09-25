@@ -1,11 +1,13 @@
 package com.example.devicemanagetester
 
+import android.os.Build
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.devicemanager.DeviceManager
 import com.example.devicemanagetester.databinding.FragmentBuildInfoBinding
 import com.example.devicemanagetester.databinding.ItemBuildBinding
 
@@ -43,25 +45,37 @@ class BuildInfoFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val fragmentBuildInfoBinding = FragmentBuildInfoBinding.bind(view)
-        fragmentBuildInfoBinding.buildRv.adapter =
-            object : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-                override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-                    val view = ItemBuildBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-                    val viewHolder = object : RecyclerView.ViewHolder(view.root){
-
-                    }
-                    return viewHolder
-                }
-
-                override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-
-                }
-
-                override fun getItemCount(): Int {
-                    return 100
-                }
-
-            }
+        val deviceManager = DeviceManager()
+        fragmentBuildInfoBinding.buildRv.adapter = BuildRvAdt()
+        (fragmentBuildInfoBinding.buildRv.adapter as BuildRvAdt).apply {
+            setData(ArrayList<BuildData>().apply {
+                add(BuildData("Build.USER", Build.USER))
+                add(BuildData("Build.DEVICE", Build.DEVICE))
+                add(BuildData("Build.BOARD", Build.BOARD))
+                add(BuildData("Build.BOOTLOADER", Build.BOOTLOADER))
+                add(BuildData("Build.BRAND", Build.BRAND))
+                add(BuildData("Build.DISPLAY", Build.DISPLAY))
+                add(BuildData("Build.FINGERPRINT", Build.FINGERPRINT))
+                add(BuildData("Build.HARDWARE", Build.HARDWARE))
+                add(BuildData("Build.HOST", Build.HOST))
+                add(BuildData("Build.ID", Build.ID))
+                add(BuildData("Build.MANUFACTURER", Build.MANUFACTURER))
+                add(BuildData("Build.MODEL", Build.MODEL))
+                add(BuildData("Build.PRODUCT", Build.PRODUCT))
+                add(BuildData("Build.TAGS", Build.TAGS))
+                add(BuildData("Build.TYPE", Build.TYPE))
+                add(BuildData("Build.UNKNOWN", Build.UNKNOWN))
+                add(BuildData("Build.getRadioVersion", Build.getRadioVersion()))
+                //add(BuildData("Build.USER", Build.getSerial()))
+                //add(BuildData("Build.USER", Build.Partition.PARTITION_NAME_SYSTEM))
+                //add(BuildData("Build.USER", Build.VERSION.BASE_OS))
+                add(BuildData("Build.VERSION.CODENAME", Build.VERSION.CODENAME))
+                add(BuildData("Build.VERSION.INCREMENTAL", Build.VERSION.INCREMENTAL))
+                add(BuildData("Build.VERSION.RELEASE", Build.VERSION.RELEASE))
+                //add(BuildData("Build.USER", Build.VERSION.PREVIEW_SDK_INT.toString()))
+                add(BuildData("Build.VERSION.SDK_INT", Build.VERSION.SDK_INT.toString()))
+            })
+        }
     }
 
     companion object {
